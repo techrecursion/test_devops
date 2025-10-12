@@ -10,7 +10,7 @@ public class AppController {
 
     @GetMapping("/data")
     public String getData() {
-        return "DevOps testing!";
+        return "DevOps testing started!";
     }
 
 }

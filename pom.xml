@@ -78,6 +78,7 @@
 				</configuration>
 			</plugin>
 		</plugins>
+		<finalName>test-devops</finalName>
 	</build>
 
 </project>

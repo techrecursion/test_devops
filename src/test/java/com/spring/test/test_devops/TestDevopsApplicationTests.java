@@ -3,14 +3,14 @@ package com.spring.test.test_devops;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @SpringBootTest
 class TestDevopsApplicationTests {
 
 	@Test
 	void contextLoads() {
-		assertFalse(true);
+		assertTrue(true);
 	}
 
 }

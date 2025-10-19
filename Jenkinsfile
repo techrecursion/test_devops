@@ -31,6 +31,16 @@ pipeline {
             }
         }
 
+
+        stage('Build Docker Image') {
+            steps {
+                script {
+                    // Build the Docker image, tagging it with the registry and image name/tag
+                    sh 'docker build -t abhi0401/test-devops:1.0 .'
+                }
+            }
+        }
+
     }
 
     post {

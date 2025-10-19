@@ -45,7 +45,7 @@ pipeline {
                     steps {
                         script {
                             // Push the Docker image to Docker Hub
-                            withCredentials([string(credentialsId: '', variable: 'dockerhubpwd')]) {
+                            withCredentials([string(credentialsId: 'docker_hub', variable: 'dockerhubpwd')]) {
                             sh 'docker login -u abhi0401 -p ${dockerhubpwd}'
                             echo 'DockerHub login successful'
                             }

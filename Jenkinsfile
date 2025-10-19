@@ -45,12 +45,11 @@ pipeline {
                     steps {
                         script {
                             // Push the Docker image to Docker Hub
-                            withCredentials([string(credentialsId: 'docker_hub', variable: 'docker_hub_cred')]) {
-                            sh 'docker login -u abhi0401 -p ${docker_hub_cred}'
-                            echo 'DockerHub login successful'
-                            }
-                            sh 'docker push abhi0401/test-devops:1.0'
-                            echo 'Image pushed to docker hub'
+                            withCredentials([usernamePassword(credentialsId: 'dockerhub-credentials', usernameVariable: 'DOCKERHUB_USERNAME', passwordVariable: 'DOCKERHUB_PASSWORD')]) {
+                                                sh 'docker login -u $DOCKERHUB_USERNAME -p $DOCKERHUB_PASSWORD'
+                                                sh 'docker push abhi0401/test-devops:1.0'
+                                                echo 'Docker image pushed to Docker Hub successfully.'
+                                            }
                         }
                     }
                 }
@@ -60,6 +59,7 @@ pipeline {
     post {
         always {
             echo 'Pipeline finished.'
+            sh 'docker logout'
         }
         success {
             echo 'Build successful!'

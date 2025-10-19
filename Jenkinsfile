@@ -41,6 +41,20 @@ pipeline {
             }
         }
 
+        stage('Push Image To DockerHub') {
+                    steps {
+                        script {
+                            // Push the Docker image to Docker Hub
+                            withCredentials([string(credentialsId: '', variable: 'dockerhubpwd')]) {
+                            sh 'docker login -u abhi0401 -p ${dockerhubpwd}'
+                            echo 'DockerHub login successful'
+                            }
+                            sh 'docker push abhi0401/test-devops:1.0'
+                            echo 'Image pushed to docker hub'
+                        }
+                    }
+                }
+
     }
 
     post {
